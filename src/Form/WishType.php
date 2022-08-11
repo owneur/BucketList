@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Wish;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,6 +18,7 @@ class WishType extends AbstractType
             ->add('title',TextType::class,['label' => 'Your idea'])
             ->add('description',TextareaType::class,['label' => 'Please describe it!'])
             ->add('author',TextType::class,['label' => 'Your username'])
+            ->add('create', SubmitType::class)
         ;
     }
 
