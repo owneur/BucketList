@@ -4,7 +4,7 @@
     <h3>All wishes!</h3>
     {% for wish in wishes %}
         <article>
-            <a href="{{ path('detail', {'id': wish.id}) }}" title="View wish {{ wish.title }}" >{{ wish.title }}</a>
+            <a href="{{ path('detail', {'id': wish.id}) }}" title="View wish {{ wish.title }}" >{{ wish.title }} [{{ wish.wish.name }}]</a>
         </article>
     {% endfor %}
 {% endblock %}

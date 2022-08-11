@@ -17,7 +17,7 @@ class Wish
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank]
-    #[Assert\Length(max: 250,minMessage: "Le titre ne doit pas dépassser 250 caractères !")]
+    #[Assert\Length(max: 255,minMessage: "Le titre ne doit pas dépassser 250 caractères !")]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
@@ -32,6 +32,10 @@ class Wish
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $dateCreated = null;
+
+    #[ORM\ManyToOne(inversedBy: 'wish')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $wish = null;
 
     public function getId(): ?int
     {
@@ -94,6 +98,18 @@ class Wish
     public function setDateCreated(\DateTimeInterface $dateCreated): self
     {
         $this->dateCreated = $dateCreated;
+
+        return $this;
+    }
+
+    public function getWish(): ?Category
+    {
+        return $this->wish;
+    }
+
+    public function setWish(?Category $wish): self
+    {
+        $this->wish = $wish;
 
         return $this;
     }

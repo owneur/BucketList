@@ -6,7 +6,7 @@
 
 {% block body %}
     <div class="container">
-        <h2>{{ wish.title }}</h2>
+        <h2>{{ wish.title }} [{{ wish.wish.name }}]</h2>
         <p>Created by {{ wish.author }} on {{ wish.dateCreated | date("Y-m-d")}}</p>
         <p>{{ wish.description }}</p>
     </div>
