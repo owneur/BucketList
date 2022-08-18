@@ -45,7 +45,7 @@ class WishController extends AbstractController
     #[Route('/wishes', name: 'wishes')]
     public function list(WishRepository $wishRepository): Response
     {
-        $wishes = $wishRepository->findAll();
+        $wishes = $wishRepository->findBy(array('wish' => $this->getUser()->getId()));
 
         return $this->render('wish/list.html.twig',[
             "wishes" => $wishes
